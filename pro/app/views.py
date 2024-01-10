@@ -10,4 +10,14 @@ def index(request):
     }
     return render(request,'index.html',data)
 def men(request):
-    return render(request,'men.html')
+    content=Shoes.objects.all()
+    data={
+        'result':content
+    }
+    return render(request,'men.html',data)
+def women(request):
+    content=Shoes.objects.all()
+    data={
+        'result':content
+    }
+    return render(request,'women.html',data)
