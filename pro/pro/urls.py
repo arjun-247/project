@@ -21,8 +21,10 @@ from app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name='home'),
-    path('/men',views.men,name='men'),
-    path('/women',views.men,name='women'),
+    path('men',views.men,name='men'),
+    path('women',views.women,name='women'),
+    path('kids',views.kids,name='kids'),
+    
 ]
 
 if settings.DEBUG:
