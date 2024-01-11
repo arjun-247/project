@@ -27,3 +27,9 @@ def kids(request):
         'result':content
     }
     return render(request,'kids.html',data)
+def collection(request):
+    content=Shoes.objects.all()
+    data={
+        'result':content
+    }
+    return render(request,'collection.html',data)
