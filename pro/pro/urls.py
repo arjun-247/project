@@ -22,9 +22,18 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.index,name='home'),
     path('men',views.men,name='men'),
+    path('men_casual',views.men_casual,name='men_casual'),
+    path('men_formal',views.men_formal,name='men_formal'),
+    path('men_boots',views.men_boots,name='men_boots'),
+    path('men_sneakers',views.men_sneakers,name='men_sneaker'),
     path('women',views.women,name='women'),
+    path('women_casual',views.women_casual,name='women_casual'),
+    path('women_sports',views.women_sports,name='women_sports'),
+    path('women_boots',views.women_dress,name='women_dress'),
     path('kids',views.kids,name='kids'),
     path('collection',views.collection,name='collection'),
+    path('about',views.about,name='about'),
+    path('contact',views.contact,name='contact'),
 ]
 
 if settings.DEBUG:

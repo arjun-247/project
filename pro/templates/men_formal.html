@@ -72,7 +72,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading colorlib-heading-sm">
-						<h2>View All Products</h2>
+						<h2>Formal Shoes</h2>
 					</div>
 				</div>
 				
@@ -81,7 +81,7 @@
 
 					<!-- {% comment %} {{result}} {% endcomment %} -->
 					{% for i in result %}
-					{% if i.gender == "men" %}
+					{% if i.gender == "men" and i.category == "formal" %}
 
 					<div class="col-lg-4 col-md-3 col-sm-2 ">
 						<a href="" class="text-decoration-none text-dark" >
