@@ -88,3 +88,15 @@ def about(request):
     return render(request,'about.html')
 def contact(request):
     return render(request,'contact.html')
+
+
+def details(request,id):
+    p=Shoes.objects.get(pk=id)
+    print(p)
+    data={
+        'data':p
+    }
+    return render(request,'product-detail.html',data)
+        
+    
+    

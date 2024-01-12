@@ -34,6 +34,7 @@ urlpatterns = [
     path('collection',views.collection,name='collection'),
     path('about',views.about,name='about'),
     path('contact',views.contact,name='contact'),
+    path('details/<int:id>/',views.details,name='details'),
 ]
 
 if settings.DEBUG:

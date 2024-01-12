@@ -9,7 +9,8 @@ class Shoes(models.Model):
     price=models.CharField(max_length=200)
     sale=models.CharField(max_length=10)
     image=models.ImageField(upload_to='gallery')
-
+    image2=models.ImageField(upload_to='gallery')
+    image3=models.ImageField(upload_to='gallery')
     def __str__(self):
         return self.name
     

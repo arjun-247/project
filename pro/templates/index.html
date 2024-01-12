@@ -93,6 +93,8 @@
 								<li><a href="{% url 'about' %}">About</a></li>
 								<li><a href="{% url 'contact' %}">Contact</a></li>
 								<li class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a>
+								<li class="cart"><a href="cart.html"></i>Login</a>
+								<li class="cart"><a href="cart.html"></i>Sign Up</a>
 								</li>
 							</ul>
 						</div>
@@ -234,7 +236,7 @@
 						{% if i.sale == "yes" %}
 
 						<div class="col-lg-4 col-md-3 col-sm-2 ">
-							<a href="" class="text-decoration-none text-dark" >
+							<a href="{% url 'details' i.pk %}" class="text-decoration-none text-dark" >
 							<div class="card my-3" style="width: 100%; height: 100%; border: 0cap; ">
 								<img src="{{i.image.url}}" class="card-img-top w-100 " alt="..." >
 								<div class="card-body">
