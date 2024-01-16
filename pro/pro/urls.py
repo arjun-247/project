@@ -35,7 +35,11 @@ urlpatterns = [
     path('about',views.about,name='about'),
     path('contact',views.contact,name='contact'),
     path('details/<int:id>/',views.details,name='details'),
+    path('signup/',views.signup,name='signup'),
+    path('login/',views.user_login,name='login'),
+    path('logout/',views.user_logout,name='logout'),
 ]
+
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

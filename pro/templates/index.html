@@ -50,6 +50,7 @@
 	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
+
 <body>
 
 	<div class="colorlib-loader"></div>
@@ -60,9 +61,14 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-sm-7 col-md-9">
-							<div id="colorlib-logo"><a href="{% url 'home' %}">Footwear</a></div>
+							<div id="colorlib-logo"><a href="{% url 'home' %}">SNEAK STORE</a></div>
 						</div>
 						<div class="col-sm-5 col-md-3">
+							{% if user.is_authenticated %}
+									<h1>{{user}}</h1>
+									{% else %}
+									<h3>Guest</h3>
+									{% endif %}
 							<form action="#" class="search-wrap">
 								<div class="form-group">
 									<input type="search" class="form-control search" placeholder="Search">
@@ -93,8 +99,15 @@
 								<li><a href="{% url 'about' %}">About</a></li>
 								<li><a href="{% url 'contact' %}">Contact</a></li>
 								<li class="cart"><a href="cart.html"><i class="icon-shopping-cart"></i> Cart [0]</a>
-								<li class="cart"><a href="cart.html"></i>Login</a>
-								<li class="cart"><a href="cart.html"></i>Sign Up</a>
+								
+								{% if user.is_authenticated %}
+								
+									<li class="cart"><a href="{% url 'signup' %}"></i>Sign Up</a>
+									<li class="cart"><a href="{% url 'logout' %}"></i>Logout</a>
+									{% else %}
+									<li class="cart"><a href="{% url 'login' %}"></i>Login</a>
+									<li class="cart"><a href="{% url 'signup' %}"></i>Sign Up</a>
+								{% endif %}	
 								</li>
 							</ul>
 						</div>
@@ -139,7 +152,8 @@
 											<h2 class="head-2">Shoes</h2>
 											<h2 class="head-3">Collection</h2>
 											<p class="category"><span>New trending shoes</span></p>
-											<p><a href="{% url 'collection' %}" class="btn btn-outline-light btn-sm">Shop Collection</a></p>
+											<p><a href="{% url 'collection' %}"
+													class="btn btn-outline-light btn-sm">Shop Collection</a></p>
 										</div>
 									</div>
 								</div>
@@ -157,7 +171,8 @@
 											<h2 class="head-2">Sale</h2>
 											<h2 class="head-3"><strong class="font-weight-bold">50%</strong> Off</h2>
 											<p class="category"><span>Big sale </span></p>
-											<p><a href="{% url 'collection' %}" class="btn btn-outline-light btn-sm">Shop Collection</a></p>
+											<p><a href="{% url 'collection' %}"
+													class="btn btn-outline-light btn-sm">Shop Collection</a></p>
 										</div>
 									</div>
 								</div>
@@ -176,7 +191,8 @@
 											<h2 class="head-3">up to <strong class="font-weight-bold">30%</strong> off
 											</h2>
 											<p class="category"><span>New stylish shoes for men</span></p>
-											<p><a href="{% url 'men' %}" class="btn btn-outline-light btn-sm">Shop Collection</a></p>
+											<p><a href="{% url 'men' %}" class="btn btn-outline-light btn-sm">Shop
+													Collection</a></p>
 										</div>
 									</div>
 								</div>
@@ -229,26 +245,27 @@
 					</div>
 				</div>
 				<div class="row row-pb-md">
-					<div class="row" > 
+					<div class="row">
 
 						<!-- {% comment %} {{result}} {% endcomment %} -->
 						{% for i in result %}
 						{% if i.sale == "yes" %}
 
 						<div class="col-lg-4 col-md-3 col-sm-2 ">
-							<a href="{% url 'details' i.pk %}" class="text-decoration-none text-dark" >
-							<div class="card my-3" style="width: 100%; height: 100%; border: 0cap; ">
-								<img src="{{i.image.url}}" class="card-img-top w-100 " alt="..." >
-								<div class="card-body">
-									<!-- <h5 class="card-title" id="brand" name="brand">{{i.brand}}</h5> -->
-									<h5 class="card-title text-center" id="name" name="name">{{i.name}}</h5>
-									<!-- <p style="font-size: smaller;"></p> -->
-									<p class="card-text text-center" id="price" name="price">MRP: {{i.price}}</p>
-									<!-- <a href="https://m.imdb.com/title/tt1055369/?ref_=tt_sims_tt_i_1" class="btn btn-outline-danger">ADD TO CART</a> -->
-									<!-- <a href="https://m.imdb.com/title/tt1055369/?ref_=tt_sims_tt_i_1"
+							<a href="{% url 'details' i.pk %}" class="text-decoration-none text-dark">
+								<div class="card my-3" style="width: 100%; height: 100%; border: 0cap; ">
+									<img src="{{i.image.url}}" class="card-img-top w-100 " alt="...">
+									<div class="card-body">
+										<!-- <h5 class="card-title" id="brand" name="brand">{{i.brand}}</h5> -->
+										<h5 class="card-title text-center" id="name" name="name">{{i.name}}</h5>
+										<!-- <p style="font-size: smaller;"></p> -->
+										<p class="card-text text-center" id="price" name="price">MRP: {{i.price}}</p>
+										<!-- <a href="https://m.imdb.com/title/tt1055369/?ref_=tt_sims_tt_i_1" class="btn btn-outline-danger">ADD TO CART</a> -->
+										<!-- <a href="https://m.imdb.com/title/tt1055369/?ref_=tt_sims_tt_i_1"
 										class="btn btn-outline-warning">Shop Now</a> -->
+									</div>
 								</div>
-							</div></a>
+							</a>
 						</div>
 						{% endif %}
 						{% endfor %}
@@ -267,14 +284,14 @@
 						</div>
 							{% endif %}
 						{% endfor %} -->
-					
-					
+
+
 				</div>
 			</div>
 
 
-			<div class="row" >
-				<div class="col-md-12 text-center" >
+			<div class="row">
+				<div class="col-md-12 text-center">
 					<p><a href="{% url 'collection' %}" class="btn btn-primary btn-lg">Shop All Products</a></p>
 				</div>
 			</div>
@@ -380,9 +397,9 @@
 							<p>
 								<span><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 									Copyright &copy;
-									<script>document.write(new Date().getFullYear());</script> All rights reserved 
+									<script>document.write(new Date().getFullYear());</script> All rights reserved
 								</span>
-								
+
 							</p>
 						</div>
 					</div>
